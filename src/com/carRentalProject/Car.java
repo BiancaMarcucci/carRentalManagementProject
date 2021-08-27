@@ -9,12 +9,12 @@ public class Car {
     private Double price; /////ADD ONLY IF TIME AND WILL
     private RentedStatus carStatus;
 
-    public Car(Integer id, String make, String regNum, Double price, RentedStatus carStatus) {
+    public Car(Integer id, String make, String regNum) {
         this.id = id;
         this.make = make;
         this.regNum = regNum;
-        this.price = price;
-        this.carStatus = carStatus;
+        this.price = 0.0;
+        this.carStatus = RentedStatus.AVAILABLE;
     }
 
     public Integer getId() {
