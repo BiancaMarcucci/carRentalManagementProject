@@ -13,9 +13,9 @@ public class CarRentalDB {
     private ArrayList<Car> availableCars;
     private ArrayList<Car> rentedCars;
 
-    public CarRentalDB(ArrayList<Car> availableCars,ArrayList<Car> rentedCars ) {
-        this.availableCars = availableCars;
-        this.rentedCars=rentedCars;
+    public CarRentalDB() { //Our data base!
+        this.availableCars = new ArrayList<>() ;
+        this.rentedCars= new ArrayList<>();
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
     // a method to add a car into the list of available cars.
@@ -26,9 +26,8 @@ public class CarRentalDB {
     }
 // a method to remove a car given the id
     public ArrayList<Car> removeCar(Integer idCar){
-
         for (Car car: this.availableCars){
-            if(car.getId()==idCar){
+            if(car.getId().equals(idCar)){
                 this.availableCars.remove(car);
             System.out.println("Car n. "+car.getId()+" was REMOVED to rentable cars!");
             }else{
@@ -46,6 +45,13 @@ public class CarRentalDB {
         System.out.println("These are the rented cars: \n"+this.rentedCars);
     }
     // a method to change the property of a car to RENTED
+    public void setRented(Car car){
+    car.setCarStatus(RentedStatus.RENTED);
+    }
+    // a method to change the property of a car to AVAILABLE
+    public void setAvailable(Car car){
+        car.setCarStatus(RentedStatus.AVAILABLE);
+    }
 
 
 /////// ADD MORE STUFF IF TIME
