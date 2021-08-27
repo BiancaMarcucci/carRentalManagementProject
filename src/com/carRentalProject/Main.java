@@ -1,7 +1,20 @@
 package com.carRentalProject;
 
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args) {
+        Car test= new Car(1, "toyota", "001A", 3.5,RentedStatus.AVAILABLE );
+        CarRentalDB garage = new CarRentalDB();
+        garage.addCar(test,4.5);
+        garage.listAvailableCars();
+
+        garage.setRented(test);
+        System.out.println(test);
+        garage.switchStatusList(test);
+        garage.listRentedCars();
+        garage.listAvailableCars();
+
 
     }
 }

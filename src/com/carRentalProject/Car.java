@@ -6,10 +6,10 @@ public class Car {
     private Integer id;
     private String make;
     private String regNum;
-    private BigDecimal price; /////ADD ONLY IF TIME AND WILL
+    private Double price; /////ADD ONLY IF TIME AND WILL
     private RentedStatus carStatus;
 
-    public Car(Integer id, String make, String regNum, BigDecimal price, RentedStatus carStatus) {
+    public Car(Integer id, String make, String regNum, Double price, RentedStatus carStatus) {
         this.id = id;
         this.make = make;
         this.regNum = regNum;
@@ -41,11 +41,11 @@ public class Car {
         this.regNum = regNum;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

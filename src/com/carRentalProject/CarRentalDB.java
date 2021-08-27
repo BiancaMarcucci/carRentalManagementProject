@@ -7,6 +7,7 @@
 
 package com.carRentalProject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class CarRentalDB {
@@ -19,9 +20,10 @@ public class CarRentalDB {
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
     // a method to add a car into the list of available cars.
-    public ArrayList<Car> addCar(Car car){
+    public ArrayList<Car> addCar(Car car, Double price){
+        car.setPrice(price);
         this.availableCars.add(car);
-        System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars!");
+        System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars! It can be rented for £"+car.getPrice()+" per hours.");
         return this.availableCars;
     }
 // a method to remove a car given the id
@@ -52,7 +54,16 @@ public class CarRentalDB {
     public void setAvailable(Car car){
         car.setCarStatus(RentedStatus.AVAILABLE);
     }
-
+    // a method to move cars with different status in different ArrayLists
+    public void switchStatusList (Car car){
+        if (car.getCarStatus().equals(RentedStatus.RENTED)){
+            this.rentedCars.add(car);
+            this.availableCars.remove(car);
+        }else{
+            this.availableCars.add(car);
+            this.rentedCars.remove(car);
+        }
+    }
 
 /////// ADD MORE STUFF IF TIME
 
