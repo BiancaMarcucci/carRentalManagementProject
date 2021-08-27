@@ -1,2 +1,4 @@
-package com.carRentalProject;public class CarRentalDB {
+package com.carRentalProject;
+
+public class CarRentalDB {
 }
