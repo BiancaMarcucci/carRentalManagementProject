@@ -11,9 +11,11 @@ import java.util.ArrayList;
 
 public class CarRentalDB {
     private ArrayList<Car> availableCars;
+    private ArrayList<Car> rentedCars;
 
-    public CarRentalDB(ArrayList<Car> availableCars) {
+    public CarRentalDB(ArrayList<Car> availableCars,ArrayList<Car> rentedCars ) {
         this.availableCars = availableCars;
+        this.rentedCars=rentedCars;
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
     // a method to add a car into the list of available cars.
@@ -22,7 +24,7 @@ public class CarRentalDB {
         System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars!");
         return this.availableCars;
     }
-
+// a method to remove a car given the id
     public ArrayList<Car> removeCar(Integer idCar){
 
         for (Car car: this.availableCars){
@@ -35,6 +37,16 @@ public class CarRentalDB {
         }
         return this.availableCars;
     }
+// a method to print available cars:
+    public void listAvailableCars(){
+        System.out.println("These are the available cars: \n"+this.availableCars);
+    }
+    // a method to print available cars:
+    public void listRentedCars(){
+        System.out.println("These are the rented cars: \n"+this.rentedCars);
+    }
+    // a method to change the property of a car to RENTED
+
 
 /////// ADD MORE STUFF IF TIME
 

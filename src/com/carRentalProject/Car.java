@@ -7,12 +7,14 @@ public class Car {
     private String make;
     private String regNum;
     private BigDecimal price; /////ADD ONLY IF TIME AND WILL
+    private RentedStatus carStatus;
 
-    public Car(Integer id, String make, String regNum, BigDecimal price) {
+    public Car(Integer id, String make, String regNum, BigDecimal price, RentedStatus carStatus) {
         this.id = id;
         this.make = make;
         this.regNum = regNum;
         this.price = price;
+        this.carStatus = carStatus;
     }
 
     public Integer getId() {
@@ -47,6 +49,14 @@ public class Car {
         this.price = price;
     }
 
+    public RentedStatus getCarStatus() {
+        return carStatus;
+    }
+
+    public void setCarStatus(RentedStatus carStatus) {
+        this.carStatus = carStatus;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -54,6 +64,7 @@ public class Car {
                 ", make='" + make + '\'' +
                 ", regNum='" + regNum + '\'' +
                 ", price=" + price +
+                ", carStatus=" + carStatus +
                 '}';
     }
 }
