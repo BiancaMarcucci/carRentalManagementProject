@@ -37,6 +37,15 @@ public class Main {
         garage.listAvailableCars();
 
 
+
+//        Person personForTesting=new Person();
+//        personForTesting.askDetails();
+//        System.out.println(personForTesting);
+
+         Customers customerForTesting=new Customers();
+         customerForTesting.greetAndSaveNewCustomer();
+         System.out.println("List of customers: "+customerForTesting.getCustomersList());
+
     }
 }
 
