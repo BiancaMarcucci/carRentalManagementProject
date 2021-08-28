@@ -61,6 +61,8 @@ public class Customers {
 
 ///////////////////////////////////////// OLD CUSTOMER WANTS TO RETURN CAR //////////////////////////////////////////////////
 
+// ask user which car wants to return -----> ie ask either  id of car  or costumer id
+    // implement changing status of rented car to avai
 
 
 

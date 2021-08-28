@@ -7,7 +7,6 @@
 
 package com.carRentalProject;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class CarsListsDB {
@@ -19,63 +18,41 @@ public class CarsListsDB {
         this.rentedCars= new ArrayList<>();
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
-    // a method to add a car into the list of available cars.
-    public ArrayList<Car> addCarToAvailable(Car car, Double price){
-        car.setPrice(price);
-        this.availableCars.add(car);
-        System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars! It can be rented for £"+car.getPrice()+" per hour.");
-        return this.availableCars;
-    }
-// a method to remove a car given the id from available list
-    public ArrayList<Car> removeCarFromAvailable(Integer idCar){
-        for (Car car: this.availableCars){
-            if(car.getId().equals(idCar)){
-                this.availableCars.remove(car);
-            System.out.println("Car n. "+car.getId()+" was REMOVED to rentable cars!");
-            }else{
-           System.out.println("The car wanted is not available to rent!");
-            }
-        }
-        return this.availableCars;
 
- ///// a method to
+///////////////// METHODS TO MOVE CARS (RENTED OR AVAILABLE ) BETWEEN LISTS OF RENTED OR AVAILABLE CARS///////////////////
+    ///// a method to add a car to the list of RENTED cars
 
-
-
-
-    }
-    // a method to print available cars:
-    public void listAvailableCars(){
-        System.out.println("These are the available cars: \n"+this.availableCars);
-    }
-    // a method to print rented cars:
-    public void listRentedCars(){
-        System.out.println("These are the rented cars: \n"+this.rentedCars);
-    }
-    // a method to change the property of a car to RENTED
+////////////////// methods to move cars with different status in different ArrayLists ///////////////////////////////////
+    // a method to change the property of a car to RENTED and move it car to the rentedlist
     public void setRented(Car car){
-    car.setCarStatus(RentedStatus.RENTED);
+        car.setCarStatus(RentedStatus.RENTED);
+        this.switchStatusList(car);
     }
-    // a method to change the property of a car to AVAILABLE
+    // a method to change the property of a car to AVAILABLE and move it car to the available list
     public void setAvailable(Car car){
         car.setCarStatus(RentedStatus.AVAILABLE);
+        this.switchStatusList(car);
     }
-    // a method to move cars with different status in different ArrayLists
+    // method to switch lists, used in SetRented and SetAvailable
     public void switchStatusList (Car car){
         if (car.getCarStatus().equals(RentedStatus.RENTED)){
             this.rentedCars.add(car);
             this.availableCars.remove(car);
-        }else{
+        }else if(car.getCarStatus().equals(RentedStatus.AVAILABLE)){
             this.availableCars.add(car);
             this.rentedCars.remove(car);
         }
     }
+////////////////////////////////// TO PRINT LISTS OF AVAILABLE OR RENTED CARS //////////////////////////////////////////
+    // a method to print available cars:
+    public void listAvailableCars(){
+        System.out.println("These are the available cars: \n"+this.availableCars);
+    }
 
-/////// ADD MORE STUFF IF TIME
-
-
-
-
+    // a method to print rented cars:
+    public void listRentedCars(){
+        System.out.println("These are the rented cars: \n"+this.rentedCars);
+    }
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
