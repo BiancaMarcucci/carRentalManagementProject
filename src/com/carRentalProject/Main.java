@@ -1,7 +1,18 @@
 package com.carRentalProject;
 
 import java.math.BigDecimal;
-//////////////////////////////////////////////////////////helloo////////////////////////////////////////////////////////////////
+
+/* TO TRY LIST!!!
+* ---ASK----> YOU HERE TO BOOK, RETURN A CAR OR GIVE US A CAR TO RENT?----COULD CREATE CLASSES FOR EACH OPTION (IT WOULD IMPLEMENT THE CLASSES AND METHODS WE ALREADY CREATED)
+* IF BOOK: COULD CREATE A CUSTOMER CLASS TO KEEP A LIST OF ALL COSTUMERS WHO RENTED A CAR! (BUSAYO'S IDEA), WHEN A CAR IS BOOKED, WILL BE MOVE TO RENTED LIST. SHOW THE LIST OF RENTABLE CARS!
+* IF RETURN: REMOVE COSTUMER FROM LIST AND MOVE THE RENTED CAR TO AVAILABLE LIST (AFTER CHANGING RENTED STATUS TO AVAILABLE)
+* IF GIVE US A CAR: ADD THE CAR TO AVAILABLE CARS TO RENT
+* */
+
+
+
+
+
 public class Main {
     public static void main(String[] args) {
         Car test= new Car(1, "Toyota", "001A");
