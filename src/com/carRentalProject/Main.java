@@ -1,7 +1,5 @@
 package com.carRentalProject;
 
-import java.math.BigDecimal;
-
 /* TO TRY LIST!!!
 * ---ASK----> YOU HERE TO BOOK, RETURN A CAR OR GIVE US A CAR TO RENT?----COULD CREATE CLASSES FOR EACH OPTION (IT WOULD IMPLEMENT THE CLASSES AND METHODS WE ALREADY CREATED)
 * IF BOOK: COULD CREATE A CUSTOMER CLASS TO KEEP A LIST OF ALL COSTUMERS WHO RENTED A CAR! (BUSAYO'S IDEA), WHEN A CAR IS BOOKED, WILL BE MOVE TO RENTED LIST. SHOW THE LIST OF RENTABLE CARS!
@@ -21,12 +19,12 @@ public class Main {
         Car test4= new Car(4, "Fiat", "004D");
         Car test5= new Car(5, "Lamborghini", "005E");
 
-        CarRentalDB garage = new CarRentalDB();
-        garage.addCar(test,4.5);
-        garage.addCar(test2,5.5);
-        garage.addCar(test3,6.5);
-        garage.addCar(test4,7.5);
-        garage.addCar(test5,8.5);
+        CarsListsDB garage = new CarsListsDB();
+        garage.addCarToAvailable(test,4.5);
+        garage.addCarToAvailable(test2,5.5);
+        garage.addCarToAvailable(test3,6.5);
+        garage.addCarToAvailable(test4,7.5);
+        garage.addCarToAvailable(test5,8.5);
 
         garage.listAvailableCars();
 
@@ -44,6 +42,7 @@ public class Main {
 
          Customers customerForTesting=new Customers();
          customerForTesting.greetAndSaveNewCustomer();
+         System.out.println("New Costumer added: "+customerForTesting.getNewCustomer());
          System.out.println("List of customers: "+customerForTesting.getCustomersList());
 
     }

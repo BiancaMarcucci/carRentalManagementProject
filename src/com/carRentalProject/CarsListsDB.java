@@ -10,24 +10,24 @@ package com.carRentalProject;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class CarRentalDB {
+public class CarsListsDB {
     private ArrayList<Car> availableCars;
     private ArrayList<Car> rentedCars;
 
-    public CarRentalDB() { //Our data base!
+    public CarsListsDB() { //Our LISTS:
         this.availableCars = new ArrayList<>() ;
         this.rentedCars= new ArrayList<>();
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
     // a method to add a car into the list of available cars.
-    public ArrayList<Car> addCar(Car car, Double price){
+    public ArrayList<Car> addCarToAvailable(Car car, Double price){
         car.setPrice(price);
         this.availableCars.add(car);
-        System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars! It can be rented for £"+car.getPrice()+" per hours.");
+        System.out.println("Car n. "+car.getId()+" was ADDED to rentable cars! It can be rented for £"+car.getPrice()+" per hour.");
         return this.availableCars;
     }
-// a method to remove a car given the id
-    public ArrayList<Car> removeCar(Integer idCar){
+// a method to remove a car given the id from available list
+    public ArrayList<Car> removeCarFromAvailable(Integer idCar){
         for (Car car: this.availableCars){
             if(car.getId().equals(idCar)){
                 this.availableCars.remove(car);
@@ -37,12 +37,18 @@ public class CarRentalDB {
             }
         }
         return this.availableCars;
+
+ ///// a method to
+
+
+
+
     }
-// a method to print available cars:
+    // a method to print available cars:
     public void listAvailableCars(){
         System.out.println("These are the available cars: \n"+this.availableCars);
     }
-    // a method to print available cars:
+    // a method to print rented cars:
     public void listRentedCars(){
         System.out.println("These are the rented cars: \n"+this.rentedCars);
     }
@@ -81,10 +87,19 @@ public class CarRentalDB {
         this.availableCars = availableCars;
     }
 
+    public ArrayList<Car> getRentedCars() {
+        return rentedCars;
+    }
+
+    public void setRentedCars(ArrayList<Car> rentedCars) {
+        this.rentedCars = rentedCars;
+    }
+
     @Override
     public String toString() {
-        return "CarRentalDB{" +
+        return "CarsListsDB{" +
                 "availableCars=" + availableCars +
+                ", rentedCars=" + rentedCars +
                 '}';
     }
 }

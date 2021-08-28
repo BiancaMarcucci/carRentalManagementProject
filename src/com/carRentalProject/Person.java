@@ -36,6 +36,7 @@ public class Person {
         Scanner askFName= new Scanner(System.in);
         System.out.println("\nWhat is your First Name?");
         String userFirstName = askFName.nextLine();
+        askFName.close();
         System.out.println("Let me write it....'"+userFirstName+"'.....\n");
         this.firstName=userFirstName;
     }
@@ -44,6 +45,7 @@ public class Person {
         Scanner askLName= new Scanner(System.in);
         System.out.println("\nWhat is your Last Name?");
         String userLastName = askLName.nextLine();
+        askLName.close();
         System.out.println("Let me write it....'"+userLastName+"'.....\n");
         this.lastName=userLastName;
     }
@@ -53,6 +55,7 @@ public class Person {
         System.out.println("\nWhat is your age?");
         Integer userAge = askAge.nextInt();
         System.out.println("Let me write it....'"+userAge+"'.....\n");
+        askAge.close();
         this.age=userAge;
     }
 ///////// ASSIGN ID NUMBER ////////////////////////////////////////////////////////////////////////////////////////////
