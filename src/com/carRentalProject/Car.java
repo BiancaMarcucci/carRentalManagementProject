@@ -17,6 +17,14 @@ public class Car {
         this.carStatus = RentedStatus.AVAILABLE;
     }
 
+    public Car() {
+        this.id = id;
+        this.make = make;
+        this.regNum = regNum;
+        this.price = 0.0;
+        this.carStatus = RentedStatus.AVAILABLE;
+    }
+
     public Integer getId() {
         return id;
     }
