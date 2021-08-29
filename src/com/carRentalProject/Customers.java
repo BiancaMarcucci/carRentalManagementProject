@@ -1,6 +1,7 @@
 package com.carRentalProject;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -37,22 +38,45 @@ public class Customers {
     /////// NEED TO SHOW POSSIBLE CARS AND CREATE A WAY TO MAKE USER SELECT CAR THEY WANT, THEN CHANGE CAR STATUS AND LIST
     public void showAvailableCarsAndAskToChoose () {
 
-        this.carsDB.listAvailableCars();
-        Integer chosenCar = this.askUserToChooseCar();
-        Boolean stillSearching = true;
 
-        for (int i = 0; i < this.carsDB.getAvailableCars().size(); i++) {
 
-            if (chosenCar.equals(this.carsDB.getAvailableCars().get(i).getId())) {
-                System.out.println("Oh you chose to go for a " + this.carsDB.getAvailableCars().get(i).getMake() + "! Good choice!");
-                this.carsDB.setRented(this.carsDB.getAvailableCars().get(i));
-                break;
-            } else {
+
+//        for (int i = 0; i < this.carsDB.getAvailableCars().size(); i++) {
+//
+//            if (chosenCar.equals(this.carsDB.getAvailableCars().get(i).getId())) {
+//                System.out.println("Oh you chose to go for a " + this.carsDB.getAvailableCars().get(i).getMake() + "! Good choice!");
+//                this.carsDB.setRented(this.carsDB.getAvailableCars().get(i));
+//                break;
+//            } else {
+//                System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
+//            }
+//        }
+
+
+
+
+        Boolean stillSearching= true;
+        while(stillSearching){
+            this.carsDB.listAvailableCars();
+            Integer chosenCar = this.askUserToChooseCar();
+            List<Car> holdingChosenCar= this.carsDB.getAvailableCars()
+                    .stream()
+                    .filter(avCar->avCar.getId().equals(chosenCar))
+                    .collect(Collectors.toList());
+            if (!holdingChosenCar.isEmpty()){
+                System.out.println("Oh you chose to go for a " + holdingChosenCar.get(0).getMake() + "! Good choice!");
+                this.carsDB.getRentedCars().addAll(holdingChosenCar);
+                stillSearching=false;
+            }else{
                 System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
             }
         }
 
-        Arraylist<Car> holdingChosenCar= this.carsDB.getAvailableCars().stream().filter(avCar->avCar.getId().equals(chosenCar)).collect(Collectors.toList());
+
+
+
+
+
         // ourholdinlist = availablecarslist.stream().filter(availablecar->availablecar.getID().equals(chosenCar)).collect(Collectors.toList());
         // merge ourholdinglist with rented list rentedlist.addAll(ourholdinglist)
 
