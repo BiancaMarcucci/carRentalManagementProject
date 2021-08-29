@@ -15,6 +15,7 @@ public class Main {
         garage.listRentedCars();
         garage.listAvailableCars();
         */
+        /*
         // Are you staff member or client? Use a while(true) loop???
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, are you STAFF or CLIENT?");
@@ -38,6 +39,13 @@ public class Main {
         System.out.println("- To return to the main menu press 3");
 
         int clientAns = scanner.nextInt();
+
+         */
+
+        CarRentalDB garage = new CarRentalDB();
+        SystemAccess.existingCarDB(garage);
+        SystemAccess.mainMenu(garage);
+
 
     }
 }
