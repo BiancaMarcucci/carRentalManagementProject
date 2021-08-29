@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public class Car {
     private Integer id;
     private String make;
-    private String regNum;
-    private Double price; /////ADD ONLY IF TIME AND WILL
+    private String regNum;///// CAN REMOVE TO BE HONEST
+    private Double price;
     private RentedStatus carStatus;
 
     public Car(Integer id, String make, String regNum) {
