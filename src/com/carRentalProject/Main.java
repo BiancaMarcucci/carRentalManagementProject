@@ -45,8 +45,9 @@ public class Main {
          System.out.println("New Costumer added: "+customerForTesting.getNewCustomer());
          System.out.println("List of customers: "+customerForTesting.getCustomersList());
          customerForTesting.showAvailableCarsAndAskToChoose();
+        System.out.println(garage.getRentedCars());
 
-         customerForTesting.askUserToGiveCar();
+        // customerForTesting.askUserToGiveCar();
 
 
 

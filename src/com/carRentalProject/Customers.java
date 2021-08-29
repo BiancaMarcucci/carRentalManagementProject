@@ -48,6 +48,7 @@ public class Customers {
                     .collect(Collectors.toList());
             if (!holdingChosenCar.isEmpty()){
                 System.out.println("Oh you chose to go for a " + holdingChosenCar.get(0).getMake() + "! Good choice!");
+                this.carsDB.setRented(holdingChosenCar.get(0));
                 this.carsDB.getRentedCars().addAll(holdingChosenCar);
                 stillSearching=false;
             }else{
@@ -88,18 +89,13 @@ public class Customers {
                     .collect(Collectors.toList());
             if (!holdingReturningCar.isEmpty()){
                 System.out.println("Thank you for returning our " + holdingReturningCar.get(0).getMake() + "! Thank you for renting a car with us!");
-                this.carsDB.getRentedCars().addAll(holdingReturningCar);
+                this.carsDB.getAvailableCars().addAll(holdingReturningCar);
                 stillS=false;
             }else{
                 System.out.println("Could not find the car you rented, are you sure you gave me the right Identification code?");
             }
         }
         }
-
-
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
