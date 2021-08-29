@@ -61,9 +61,10 @@ public class SystemAccess {
             // Remove car
             System.out.println("REMOVE CAR: ");
             System.out.println("Enter car id number: ");
-            int carID = scanner.nextInt();
+            Integer carID = scanner.nextInt();
             garage.removeCar(carID);
             System.out.println("You have successfully removed car ID:" + carID);
+            staffMenu(garage);
         } else if (staffAns == 3) {
             // Available cars list
             garage.listAvailableCars();

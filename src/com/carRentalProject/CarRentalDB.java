@@ -9,6 +9,8 @@ package com.carRentalProject;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarRentalDB {
     private ArrayList<Car> availableCars;
@@ -28,13 +30,34 @@ public class CarRentalDB {
     }
 // a method to remove a car given the id
     public ArrayList<Car> removeCar(Integer idCar){
+        /*
         for (Car car: this.availableCars){
             if(car.getId().equals(idCar)){
                 this.availableCars.remove(car);
-            System.out.println("Car n. "+car.getId()+" was REMOVED to rentable cars!");
+                System.out.println("Car n. "+car.getId()+" was REMOVED to rentable cars!");
+                break;
             }else{
-           System.out.println("The car wanted is not available to rent!");
+                System.out.println("The car wanted is not available to rent!");
             }
+        }
+        return this.availableCars;
+
+         */
+
+        this.listAvailableCars();
+        Integer chosenCar = idCar;
+
+        List<Car> holdingChosenCar= this.availableCars
+                .stream()
+                .filter(avCar->avCar.getId().equals(chosenCar))
+                .collect(Collectors.toList());
+
+        if (!holdingChosenCar.isEmpty()){
+            System.out.println("You have chosen to remove " + holdingChosenCar.get(0).getMake() + "!");
+            this.availableCars.remove(holdingChosenCar.get(0));
+
+        }else{
+            System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
         }
         return this.availableCars;
     }
