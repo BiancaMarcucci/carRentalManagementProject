@@ -57,6 +57,7 @@ public class SystemAccess {
             //Add Car
             createNewCar(garage);
             System.out.println("You have successfully created a new car!");
+            staffMenu();
         } else if (staffAns == 2) {
             // Remove car
             System.out.println("REMOVE CAR: ");
@@ -68,9 +69,11 @@ public class SystemAccess {
         } else if (staffAns == 3) {
             // Available cars list
             garage.listAvailableCars();
+            staffMenu();
         } else if (staffAns == 4) {
             // Rented cars list
             garage.listRentedCars();
+            staffMenu();
         } else if (staffAns==5) {
             mainMenu(garage);
         } else {
