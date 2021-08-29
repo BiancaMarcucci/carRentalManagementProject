@@ -46,6 +46,7 @@ public class Main {
          System.out.println("List of customers: "+customerForTesting.getCustomersList());
          customerForTesting.showAvailableCarsAndAskToChoose();
 
+         customerForTesting.askUserToGiveCar();
 
 
 
