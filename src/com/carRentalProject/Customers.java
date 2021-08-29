@@ -38,23 +38,6 @@ public class Customers {
     /////// NEED TO SHOW POSSIBLE CARS AND CREATE A WAY TO MAKE USER SELECT CAR THEY WANT, THEN CHANGE CAR STATUS AND LIST
     public void showAvailableCarsAndAskToChoose () {
 
-
-
-
-//        for (int i = 0; i < this.carsDB.getAvailableCars().size(); i++) {
-//
-//            if (chosenCar.equals(this.carsDB.getAvailableCars().get(i).getId())) {
-//                System.out.println("Oh you chose to go for a " + this.carsDB.getAvailableCars().get(i).getMake() + "! Good choice!");
-//                this.carsDB.setRented(this.carsDB.getAvailableCars().get(i));
-//                break;
-//            } else {
-//                System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
-//            }
-//        }
-
-
-
-
         Boolean stillSearching= true;
         while(stillSearching){
             this.carsDB.listAvailableCars();
@@ -71,19 +54,6 @@ public class Customers {
                 System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
             }
         }
-
-
-
-
-
-
-        // ourholdinlist = availablecarslist.stream().filter(availablecar->availablecar.getID().equals(chosenCar)).collect(Collectors.toList());
-        // merge ourholdinglist with rented list rentedlist.addAll(ourholdinglist)
-
-
-
-
-
     }
     ////////// method to take user input for which car they want, used in showAvailableCarsAndAskToChoose method
     public Integer askUserToChooseCar(){
@@ -92,6 +62,13 @@ public class Customers {
         Integer customerChoice=askWhichCar.nextInt();
         return customerChoice;
     }
+//////////// same but to return car////////////////////////////////////////////////////////
+    public Integer askUserToGiveCar(){
+        Scanner askWhichReturn=new Scanner(System.in);
+        System.out.println("\nSo Which car are you returning? Can you please tell me its Identification Code? ");
+        Integer customerReturn=askWhichReturn.nextInt();
+        return customerReturn;
+    }
 
 ///////////////////////////////////////// OLD CUSTOMER WANTS TO RETURN CAR //////////////////////////////////////////////////
 
@@ -99,17 +76,24 @@ public class Customers {
     // implement changing status of rented car to available
     public void returnCar(){
         System.out.println("Oh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
-        Scanner askReturn =new Scanner(System.in);
-        Integer customerReturns=askReturn.nextInt();
 
-        for (int i = 0; i <this.carsDB.getRentedCars().size() ; i++) {
-            if (customerReturns.equals(this.carsDB.getRentedCars().get(i).getId())){
-                System.out.println("Perfect, thank you for returning "+this.carsDB.getRentedCars().get(i).getMake()+"! Have a good day!");
-                this.carsDB.setAvailable(this.carsDB.getRentedCars().get(i));
-                break;
+
+        Boolean stillS= true;
+        while(stillS){
+            this.carsDB.listRentedCars();
+            Integer returningCar = this.askUserToGiveCar();
+            List<Car> holdingReturningCar= this.carsDB.getRentedCars()
+                    .stream()
+                    .filter(avCar->avCar.getId().equals(returningCar))
+                    .collect(Collectors.toList());
+            if (!holdingReturningCar.isEmpty()){
+                System.out.println("Thank you for returning our " + holdingReturningCar.get(0).getMake() + "! Thank you for renting a car with us!");
+                this.carsDB.getRentedCars().addAll(holdingReturningCar);
+                stillS=false;
+            }else{
+                System.out.println("Could not find the car you rented, are you sure you gave me the right Identification code?");
             }
         }
-        System.out.println("Could not find the car you want to return, are you sure you gave me the right Identification code?");
         }
 
 
