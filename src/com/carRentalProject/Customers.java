@@ -2,14 +2,17 @@ package com.carRentalProject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Customers {
     private ArrayList<Person> customersList;
     private Person newCustomer;
+    private CarsListsDB carsDB;
 
-    public Customers() {
+    public Customers(CarsListsDB carsDB) {
         this.customersList = new ArrayList<>();
         this.newCustomer = new Person();
+        this.carsDB=carsDB;
     }
 
 ////////////////////////////////BEHAVIOURS/////////////////////////////////////////////////////////////////////////////
@@ -32,37 +35,58 @@ public class Customers {
         this.customersList.add(this.newCustomer);
     }
     /////// NEED TO SHOW POSSIBLE CARS AND CREATE A WAY TO MAKE USER SELECT CAR THEY WANT, THEN CHANGE CAR STATUS AND LIST
-    public void showAvailableCars (){
-    CarsListsDB allCars=new CarsListsDB();
-    allCars.listAvailableCars();
+    public void showAvailableCarsAndAskToChoose () {
 
-    Integer chosenCar= this.askUserToChooseCar();
-        for (int i = 0; i <allCars.getAvailableCars().size() ; i++) {
+        this.carsDB.listAvailableCars();
+        Integer chosenCar = this.askUserToChooseCar();
+        Boolean stillSearching = true;
 
-            if (chosenCar.equals(allCars.getAvailableCars().get(i).getId())){
-                System.out.println("Oh you chose to go for a "+allCars.getAvailableCars().get(i).getMake()+"! Good choice!");
+        for (int i = 0; i < this.carsDB.getAvailableCars().size(); i++) {
 
-
+            if (chosenCar.equals(this.carsDB.getAvailableCars().get(i).getId())) {
+                System.out.println("Oh you chose to go for a " + this.carsDB.getAvailableCars().get(i).getMake() + "! Good choice!");
+                this.carsDB.setRented(this.carsDB.getAvailableCars().get(i));
+                break;
+            } else {
+                System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
             }
-
         }
+
+        Arraylist<Car> holdingChosenCar= this.carsDB.getAvailableCars().stream().filter(avCar->avCar.getId().equals(chosenCar)).collect(Collectors.toList());
+        // ourholdinlist = availablecarslist.stream().filter(availablecar->availablecar.getID().equals(chosenCar)).collect(Collectors.toList());
+        // merge ourholdinglist with rented list rentedlist.addAll(ourholdinglist)
+
+
+
 
 
     }
-    ////////// NEED TO ASK WHICH ONE THEY WANT///////////////////////
+    ////////// method to take user input for which car they want, used in showAvailableCarsAndAskToChoose method
     public Integer askUserToChooseCar(){
         Scanner askWhichCar=new Scanner(System.in);
         System.out.println("\nSo any that you like? Choose the car and then tell me its Identification Code: ");
         Integer customerChoice=askWhichCar.nextInt();
-        askWhichCar.close();
         return customerChoice;
-
     }
 
 ///////////////////////////////////////// OLD CUSTOMER WANTS TO RETURN CAR //////////////////////////////////////////////////
 
 // ask user which car wants to return -----> ie ask either  id of car  or costumer id
-    // implement changing status of rented car to avai
+    // implement changing status of rented car to available
+    public void returnCar(){
+        System.out.println("Oh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
+        Scanner askReturn =new Scanner(System.in);
+        Integer customerReturns=askReturn.nextInt();
+
+        for (int i = 0; i <this.carsDB.getRentedCars().size() ; i++) {
+            if (customerReturns.equals(this.carsDB.getRentedCars().get(i).getId())){
+                System.out.println("Perfect, thank you for returning "+this.carsDB.getRentedCars().get(i).getMake()+"! Have a good day!");
+                this.carsDB.setAvailable(this.carsDB.getRentedCars().get(i));
+                break;
+            }
+        }
+        System.out.println("Could not find the car you want to return, are you sure you gave me the right Identification code?");
+        }
 
 
 

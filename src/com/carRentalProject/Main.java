@@ -40,10 +40,15 @@ public class Main {
 //        personForTesting.askDetails();
 //        System.out.println(personForTesting);
 
-         Customers customerForTesting=new Customers();
+         Customers customerForTesting=new Customers(garage);
          customerForTesting.greetAndSaveNewCustomer();
          System.out.println("New Costumer added: "+customerForTesting.getNewCustomer());
          System.out.println("List of customers: "+customerForTesting.getCustomersList());
+         customerForTesting.showAvailableCarsAndAskToChoose();
+
+
+
+
 
     }
 }
