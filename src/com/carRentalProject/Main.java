@@ -13,29 +13,29 @@ package com.carRentalProject;
 
 public class Main {
     public static void main(String[] args) {
-        Car test= new Car(1, "Toyota", "001A");
-        Car test2= new Car(2, "Ford", "002B");
-        Car test3= new Car(3, "Ferrari", "003C");
-        Car test4= new Car(4, "Fiat", "004D");
-        Car test5= new Car(5, "Lamborghini", "005E");
-
-        CarsListsDB garage = new CarsListsDB();
-        garage.addCarToAvailable(test,4.5);
-        garage.addCarToAvailable(test2,5.5);
-        garage.addCarToAvailable(test3,6.5);
-        garage.addCarToAvailable(test4,7.5);
-        garage.addCarToAvailable(test5,8.5);
+//        Car test= new Car(1, "Toyota", "001A");
+//        Car test2= new Car(2, "Ford", "002B");
+//        Car test3= new Car(3, "Ferrari", "003C");
+//        Car test4= new Car(4, "Fiat", "004D");
+//        Car test5= new Car(5, "Lamborghini", "005E");
+//
+       CarsListsDB garage = new CarsListsDB();
+//        garage.addNewCarToAvailable(test,4.5);
+//        garage.addNewCarToAvailable(test2,5.5);
+//        garage.addNewCarToAvailable(test3,6.5);
+//        garage.addNewCarToAvailable(test4,7.5);
+//        garage.addNewCarToAvailable(test5,8.5);
 
         garage.listAvailableCars();
 
-        garage.setRented(test);
-        System.out.println(test);
-        garage.switchStatusList(test);
+//        garage.setRented(test);
+//        System.out.println(test);
+
         garage.listRentedCars();
+
+        garage.addNewCarToAvailable();
         garage.listAvailableCars();
-
-
-
+        garage.removeCarFromAvailable();
 //        Person personForTesting=new Person();
 //        personForTesting.askDetails();
 //        System.out.println(personForTesting);
@@ -45,10 +45,10 @@ public class Main {
          System.out.println("New Costumer added: "+customerForTesting.getNewCustomer());
          System.out.println("List of customers: "+customerForTesting.getCustomersList());
          customerForTesting.showAvailableCarsAndAskToChoose();
+         System.out.println(garage.getRentedCars());
+
+        customerForTesting.returnCar();
         System.out.println(garage.getRentedCars());
-
-        // customerForTesting.askUserToGiveCar();
-
 
 
 

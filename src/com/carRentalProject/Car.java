@@ -9,7 +9,7 @@ public class Car {
     private Double price;
     private RentedStatus carStatus;
 
-    public Car(Integer id, String make, String regNum) {
+    public Car() {
         this.id = id;
         this.make = make;
         this.regNum = regNum;

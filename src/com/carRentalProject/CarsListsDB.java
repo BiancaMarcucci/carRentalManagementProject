@@ -8,6 +8,9 @@
 package com.carRentalProject;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class CarsListsDB {
     private ArrayList<Car> availableCars;
@@ -19,24 +22,76 @@ public class CarsListsDB {
     }
 ////////////////////////////////BEHAVIOURS//////////////////////////////////////////////////////
 //////////////////// ADD COMPLETELY NEW CAR TO DATABASE OR REMOVE A CAR COMPLETELY/////////////////////////////////////
-    // a method to add a car into the list of AVAILABLE cars.
-    public ArrayList<Car> addCarToAvailable(Car availableCar, Double price){
-        availableCar.setPrice(price);
-        this.availableCars.add(availableCar);
-        System.out.println("Car n. "+availableCar.getId()+" was ADDED to rentable cars! It can be rented for £"+availableCar.getPrice()+" per hour.");
-        return this.availableCars;
+    // a method to add a car into the list of AVAILABLE cars. Ask user to give details of car they want to add.
+    public void addNewCarToAvailable(){
+//        availableCar.setPrice(price);
+//        this.availableCars.add(availableCar);
+//        System.out.println("Car n. "+availableCar.getId()+" was ADDED to rentable cars! It can be rented for £"+availableCar.getPrice()+" per hour.");
+//        return this.availableCars;
+        // creating new car, ask user to give details.
+        System.out.println("ADD NEW CAR:");
+        Car newCar = new Car();
+        Scanner scanner = new Scanner(System.in);
+
+
+
+        // get make
+        System.out.println("Enter Car Make: ");
+        String carMake = scanner.nextLine();
+        newCar.setMake(carMake);
+
+        //get reg number, do not have the time, but would be cool to make a regex for this....
+        System.out.println("Enter Registration Number: ");
+        String carReg = scanner.nextLine();
+        newCar.setRegNum(carReg);
+
+        //get price and add to available cars
+        System.out.println("Enter daily rental price (per hour): ");
+        double carPrice = scanner.nextDouble();
+        newCar.setPrice(carPrice);
+
+        //get id
+        System.out.println("Enter unique id: ");
+        int carID = scanner.nextInt();
+        newCar.setId(carID);
+
+
+        this.availableCars.add(newCar);
+        System.out.println("you successfully added the "+newCar.getMake()+", with the assigned ID: "+newCar.getId()+", for the price of "+newCar.getPrice()+" per hour");
+
+
     }
 // a method to remove a car given the id from AVAILABLE list
-    public ArrayList<Car> removeCarFromAvailable(Integer idCar) {
-        for (Car car : this.availableCars) {
-            if (car.getId().equals(idCar)) {
-                this.availableCars.remove(car);
-                System.out.println("Car n. " + car.getId() + " was REMOVED to rentable cars!");
+//    public ArrayList<Car> removeCarFromAvailable() {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Give the ID of the car you want to remove from the system: ");
+//        Integer idCar = scanner.nextInt();
+//        for (Car car : this.availableCars) { ////change into stream.filter.collection
+//            if (car.getId().equals(idCar)) {
+//                this.availableCars.remove(car);
+//                System.out.println("Car n. " + car.getId() + " was REMOVED from the system!");
+//            } else {
+//                System.out.println("The car wanted is not available to rent!");
+//            }
+//        }
+//        return this.availableCars;
+//    }
+
+    public void removeCarFromAvailable() {
+        Boolean stillSearching= true;
+        while(stillSearching) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Give the ID of the car you want to remove from the system: ");
+            Integer idCar = scanner.nextInt();
+            List<Car> holdingCarToRemove = this.getAvailableCars().stream().filter(avCar -> avCar.getId().equals(idCar)).collect(Collectors.toList());
+            if (!holdingCarToRemove.isEmpty()) {
+                System.out.println("You successfully REMOVED our " + holdingCarToRemove.get(0).getMake() + "!");
+                this.availableCars.remove(holdingCarToRemove.get(0));
+                stillSearching=false;
             } else {
-                System.out.println("The car wanted is not available to rent!");
+                System.out.println("Could not find the car you want to remove, please give the right Identification code?");
             }
         }
-        return this.availableCars;
     }
 ///////////////// METHODS TO MOVE CARS (RENTED OR AVAILABLE ) BETWEEN LISTS OF RENTED OR AVAILABLE CARS///////////////////
     ///// a method to add a car to the list of RENTED cars

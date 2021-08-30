@@ -49,7 +49,7 @@ public class Customers {
             if (!holdingChosenCar.isEmpty()){
                 System.out.println("Oh you chose to go for a " + holdingChosenCar.get(0).getMake() + "! Good choice!");
                 this.carsDB.setRented(holdingChosenCar.get(0));
-                this.carsDB.getRentedCars().addAll(holdingChosenCar);
+                //this.carsDB.getRentedCars().addAll(holdingChosenCar);
                 stillSearching=false;
             }else{
                 System.out.println("Could not find the car you wanted, are you sure you gave me the right Identification code?");
@@ -76,26 +76,31 @@ public class Customers {
 // ask user which car wants to return -----> ie ask either  id of car  or costumer id
     // implement changing status of rented car to available
     public void returnCar(){
-        System.out.println("Oh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
+        /////IF TIME ADD ASKING FOR USER ID , BUT NOT NECESSARY.
+        System.out.println("\nOh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
 
 
         Boolean stillS= true;
         while(stillS){
             this.carsDB.listRentedCars();
             Integer returningCar = this.askUserToGiveCar();
+            //////Does not get to execute this!
             List<Car> holdingReturningCar= this.carsDB.getRentedCars()
                     .stream()
                     .filter(avCar->avCar.getId().equals(returningCar))
                     .collect(Collectors.toList());
             if (!holdingReturningCar.isEmpty()){
-                System.out.println("Thank you for returning our " + holdingReturningCar.get(0).getMake() + "! Thank you for renting a car with us!");
-                this.carsDB.getAvailableCars().addAll(holdingReturningCar);
+                System.out.println("You successfully returned our " + holdingReturningCar.get(0).getMake() + "! Thank you for renting a car with us!");
+                this.carsDB.setAvailable(holdingReturningCar.get(0));
+
+
+                //this.carsDB.getAvailableCars().addAll(holdingReturningCar);
                 stillS=false;
             }else{
                 System.out.println("Could not find the car you rented, are you sure you gave me the right Identification code?");
             }
         }
-        }
+    }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
