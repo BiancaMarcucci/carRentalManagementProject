@@ -14,8 +14,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        CarsManagement garage = new CarsManagement();
+        Customers customer = new Customers(garage);
         AccessMenu startMenu=new AccessMenu();
-        startMenu.Menu();
+        startMenu.Menu(garage,customer);
     }
     }
 

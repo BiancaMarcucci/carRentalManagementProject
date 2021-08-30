@@ -93,11 +93,11 @@ public class Person {
         this.age = age;
     }
 
-    public Integer getIdNumber() {
+    public Integer getCustomerIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(Integer idNumber) {
+    public void setCustomerIdNumber(Integer idNumber) {
         this.idNumber = idNumber;
     }
 

@@ -4,12 +4,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class AccessMenu {
-    public void Menu () {
+    public void Menu (CarsManagement garage, Customers customer) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //INITIALISING CLASSES OBJECTS
-        CarsManagement garage = new CarsManagement();
-        Customers customer = new Customers(garage);
-
         // ASK IF STAFF OR CUSTOMER
         Boolean startingMenu = true;
         while (startingMenu) {
@@ -70,6 +66,7 @@ public class AccessMenu {
                 case "2" -> {
                     // want to see list of rented and available cars?
                     // want to add/remove a car?
+                    // want to see customers lists?
 
                     //use CARSMANAGEMENT
                     Boolean staffStaffing = true;
@@ -136,7 +133,7 @@ public class AccessMenu {
                 startingMenu = false;
             } else {
                 System.out.println("ACCESSING MAIN MENU AGAIN!\n");
-                Menu();
+                Menu(garage, customer);
             }
         }
     }

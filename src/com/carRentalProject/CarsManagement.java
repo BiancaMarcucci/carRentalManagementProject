@@ -82,11 +82,16 @@ public class CarsManagement {
     public void setRented(Car car,Person customerRenting){
         car.setCarStatus(RentedStatus.RENTED);
         car.setFirstNameClient(customerRenting.getFirstName());
+        car.setLastNameClient(customerRenting.getLastName());
+        car.setIdClient(customerRenting.getCustomerIdNumber());
         this.switchStatusList(car);
     }
     // a method to change the property of a car to AVAILABLE and move it car to the available list
     public void setAvailable(Car car){
         car.setCarStatus(RentedStatus.AVAILABLE);
+        car.setFirstNameClient("N/A");
+        car.setLastNameClient("N/A");
+        car.setIdClient(0);
         this.switchStatusList(car);
     }
     // method to switch lists, used in SetRented and SetAvailable
