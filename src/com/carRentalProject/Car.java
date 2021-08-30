@@ -1,8 +1,9 @@
 package com.carRentalProject;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Car {
+public class Car implements Serializable {
     private Integer id;
     private String make;
     private String regNum;

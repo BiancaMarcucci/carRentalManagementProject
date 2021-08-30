@@ -1,31 +1,73 @@
 package com.carRentalProject;
 
+import java.io.*;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.ArrayList;
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class Main {
     public static void main(String[] args) {
-        Car test= new Car(1, "Toyota", "001A");
-        Car test2= new Car(2, "Ford", "002B");
-        Car test3= new Car(3, "Ferrari", "003C");
-        Car test4= new Car(4, "Fiat", "004D");
-        Car test5= new Car(5, "Lamborghini", "005E");
 
         CarRentalDB garage = new CarRentalDB();
-        garage.addCar(test,4.5);
-        garage.addCar(test2,5.5);
-        garage.addCar(test3,6.5);
-        garage.addCar(test4,7.5);
-        garage.addCar(test5,8.5);
 
-        garage.listAvailableCars();
+        // Get available cars from file
 
-        garage.setRented(test);
-        System.out.println(test);
-        garage.switchStatusList(test);
+        ArrayList<Car> availableCarList = new ArrayList<>();
+
+        try {
+            FileInputStream fis = new FileInputStream("availableCarList.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            availableCarList = (ArrayList<Car>) ois.readObject();
+            garage.setAvailableCars(availableCarList);
+            ois.close();
+        } catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        // Get rented cars from file
+
+        ArrayList<Car> rentedCarList = new ArrayList<>();
+
+        try {
+            FileInputStream fis = new FileInputStream("rentedCarList.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            rentedCarList = (ArrayList<Car>) ois.readObject();
+            garage.setRentedCars(rentedCarList);
+            ois.close();
+        } catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
         garage.listRentedCars();
         garage.listAvailableCars();
 
+        // Write available cars to file
 
+        try {
+            FileOutputStream fos = new FileOutputStream("availableCarList.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(garage.getAvailableCars());
+            oos.flush();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Write rented cars to file
+
+        try {
+            FileOutputStream fos = new FileOutputStream("rentedCarList.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(garage.getRentedCars());
+            oos.flush();
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

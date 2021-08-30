@@ -7,10 +7,11 @@
 
 package com.carRentalProject;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class CarRentalDB {
+public class CarRentalDB{
     private ArrayList<Car> availableCars;
     private ArrayList<Car> rentedCars;
 
@@ -79,6 +80,14 @@ public class CarRentalDB {
 
     public void setAvailableCars(ArrayList<Car> availableCars) {
         this.availableCars = availableCars;
+    }
+
+    public ArrayList<Car> getRentedCars() {
+        return rentedCars;
+    }
+
+    public void setRentedCars(ArrayList<Car> rentedCars) {
+        this.rentedCars = rentedCars;
     }
 
     @Override
