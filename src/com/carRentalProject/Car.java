@@ -8,6 +8,10 @@ public class Car {
     private String regNum;///// CAN REMOVE TO BE HONEST
     private Double price;
     private RentedStatus carStatus;
+    private String firstNameClient; /// this is to save client details to know who rented a specific car.
+    private String lastNameClient;
+    private Integer idClient;
+
 
     public Car() {
         this.id = id;
@@ -15,7 +19,11 @@ public class Car {
         this.regNum = regNum;
         this.price = 0.0;
         this.carStatus = RentedStatus.AVAILABLE;
+        this.firstNameClient = "N/A";
+        this.lastNameClient = "N/A";
+        this.idClient = 0;
     }
+
 
     public Integer getId() {
         return id;
@@ -57,6 +65,30 @@ public class Car {
         this.carStatus = carStatus;
     }
 
+    public String getFirstNameClient() {
+        return firstNameClient;
+    }
+
+    public void setFirstNameClient(String firstNameClient) {
+        this.firstNameClient = firstNameClient;
+    }
+
+    public String getLastNameClient() {
+        return lastNameClient;
+    }
+
+    public void setLastNameClient(String lastNameClient) {
+        this.lastNameClient = lastNameClient;
+    }
+
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -65,7 +97,13 @@ public class Car {
                 ", regNum='" + regNum + '\'' +
                 ", price=" + price +
                 ", carStatus=" + carStatus +
+                ", Rented by: "+
+                " firstNameClient='" + firstNameClient + '\'' +
+                ", lastNameClient='" + lastNameClient + '\'' +
+                ", idClient=" + idClient +
                 '}';
     }
 }
+
+
 

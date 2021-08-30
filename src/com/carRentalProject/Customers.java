@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Customers {
+public class Customers extends Person {
     private ArrayList<Person> customersList;
     private Person newCustomer;
-    private CarsListsDB carsDB;
+    private CarsManagement carsDB;
 
-    public Customers(CarsListsDB carsDB) {
+    public Customers(CarsManagement carsDB) {
         this.customersList = new ArrayList<>();
         this.newCustomer = new Person();
         this.carsDB=carsDB;
@@ -48,7 +48,7 @@ public class Customers {
                     .collect(Collectors.toList());
             if (!holdingChosenCar.isEmpty()){
                 System.out.println("Oh you chose to go for a " + holdingChosenCar.get(0).getMake() + "! Good choice!");
-                this.carsDB.setRented(holdingChosenCar.get(0));
+                this.carsDB.setRented(holdingChosenCar.get(0),this.newCustomer);
                 //this.carsDB.getRentedCars().addAll(holdingChosenCar);
                 stillSearching=false;
             }else{

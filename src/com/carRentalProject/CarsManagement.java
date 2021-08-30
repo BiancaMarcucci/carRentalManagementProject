@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class CarsListsDB {
+public class CarsManagement {
     private ArrayList<Car> availableCars;
     private ArrayList<Car> rentedCars;
 
-    public CarsListsDB() { //Our LISTS:
+    public CarsManagement() { //Our LISTS:
         this.availableCars = new ArrayList<>() ;
         this.rentedCars= new ArrayList<>();
     }
@@ -24,16 +24,11 @@ public class CarsListsDB {
 //////////////////// ADD COMPLETELY NEW CAR TO DATABASE OR REMOVE A CAR COMPLETELY/////////////////////////////////////
     // a method to add a car into the list of AVAILABLE cars. Ask user to give details of car they want to add.
     public void addNewCarToAvailable(){
-//        availableCar.setPrice(price);
-//        this.availableCars.add(availableCar);
-//        System.out.println("Car n. "+availableCar.getId()+" was ADDED to rentable cars! It can be rented for £"+availableCar.getPrice()+" per hour.");
-//        return this.availableCars;
+
         // creating new car, ask user to give details.
-        System.out.println("ADD NEW CAR:");
+        System.out.println("GIVE CAR'S DETAILS");
         Car newCar = new Car();
         Scanner scanner = new Scanner(System.in);
-
-
 
         // get make
         System.out.println("Enter Car Make: ");
@@ -57,25 +52,11 @@ public class CarsListsDB {
 
 
         this.availableCars.add(newCar);
-        System.out.println("you successfully added the "+newCar.getMake()+", with the assigned ID: "+newCar.getId()+", for the price of "+newCar.getPrice()+" per hour");
+        System.out.println("you successfully added the "+newCar.getMake()+", with the assigned ID: "+newCar.getId()+", for the price of £"+newCar.getPrice()+" per hour");
 
 
     }
 // a method to remove a car given the id from AVAILABLE list
-//    public ArrayList<Car> removeCarFromAvailable() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Give the ID of the car you want to remove from the system: ");
-//        Integer idCar = scanner.nextInt();
-//        for (Car car : this.availableCars) { ////change into stream.filter.collection
-//            if (car.getId().equals(idCar)) {
-//                this.availableCars.remove(car);
-//                System.out.println("Car n. " + car.getId() + " was REMOVED from the system!");
-//            } else {
-//                System.out.println("The car wanted is not available to rent!");
-//            }
-//        }
-//        return this.availableCars;
-//    }
 
     public void removeCarFromAvailable() {
         Boolean stillSearching= true;
@@ -98,8 +79,9 @@ public class CarsListsDB {
 
 ////////////////// methods to move cars with different status in different ArrayLists ///////////////////////////////////
     // a method to change the property of a car to RENTED and move it car to the rentedlist
-    public void setRented(Car car){
+    public void setRented(Car car,Person customerRenting){
         car.setCarStatus(RentedStatus.RENTED);
+        car.setFirstNameClient(customerRenting.getFirstName());
         this.switchStatusList(car);
     }
     // a method to change the property of a car to AVAILABLE and move it car to the available list
