@@ -14,76 +14,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        CarsManagement garage=new CarsManagement();
-        // ASK IF STAFF OR CUSTOMER
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("\nHello! Who are you? select one of the options below: ".toUpperCase(Locale.ROOT));
-        System.out.println("Press 1 for CUSTOMER");
-        System.out.println("Press 2 for STAFF");
-        String staffOrCustomer= scanner.nextLine();
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // IF CUSTOMER
-        //want to rent a car, if yes show list of cars etc
-        //want to return a car
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // IF STAFF
-
-        if (staffOrCustomer.equalsIgnoreCase("2")) {
-            // want to see list of rented and available cars?
-            // want to add/remove a car?
-
-            //use CARSMANAGEMENT
-            Boolean staffStaffing = true;
-            while (staffStaffing) {
-                Scanner scanStaff = new Scanner(System.in);
-                System.out.println("Select one of the following options:".toUpperCase(Locale.ROOT));
-                System.out.println("Press 1 to see list of available cars");
-                System.out.println("Press 2 to see list of rented cars");
-                System.out.println("Press 3 to add new car");
-                System.out.println("Press 4 to remove a car");
-                String staffOption = scanStaff.nextLine();
-                switch (staffOption) {
-                    case "1":
-                        System.out.println("\nYou chose to see the list of available cars!");
-                        garage.listAvailableCars();
-                        break;
-                    case "2":
-                        System.out.println("\nYou chose to see the list of rented cars!");
-                        garage.listRentedCars();
-                        break;
-                    case "3":
-                        System.out.println("\nYou chose to ADD a new car!");
-                        garage.addNewCarToAvailable();
-                        break;
-                    case "4":
-                        System.out.println("\nYou chose to REMOVE a car!");
-                        garage.removeCarFromAvailable();
-                        break;
-                    default:
-                        System.out.println("OPTION NOT RECOGNISED! Please select a number between 1 and 4");
-                }
-                Scanner staffKeepWorking= new Scanner(System.in);
-                System.out.println("\nWould you like to do anything else? (y/n)");
-                String keepAskingStaffOption = staffKeepWorking.nextLine();
-                if(!keepAskingStaffOption.equalsIgnoreCase("y")){
-                    System.out.println("Exiting STAFF MENU...");
-                    staffStaffing=false;
-                }else{
-                    System.out.println("ACCESSING STAFF POSSIBLE OPTIONS AGAIN!");
-                }
-
-            }
-        }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        }
-
-
-
+        AccessMenu startMenu=new AccessMenu();
+        startMenu.Menu();
+    }
     }
 
 

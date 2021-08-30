@@ -29,10 +29,10 @@ public class Customers extends Person {
 
 ///////////////////////////////////////// NEW CUSTOMER WANTS TO RENT //////////////////////////////////////////////////
     public void greetAndSaveNewCustomer(){
-        System.out.println("\nWelcome! My colleague told me you need a car right? I am Jim and will help you find the perfect car for you!\n");
-        System.out.println("First of all, I will ask your details....\n");
+
+        System.out.println("\nPlease give your contact details:\n");
         this.newCustomer.askDetails();
-        System.out.println("Ok, I will now add you to the list "+this.newCustomer.getFirstName()+" !");
+        System.out.println("Added "+this.newCustomer.getFirstName()+" to the customers list!");
         this.customersList.add(this.newCustomer);
     }
     /////// NEED TO SHOW POSSIBLE CARS AND CREATE A WAY TO MAKE USER SELECT CAR THEY WANT, THEN CHANGE CAR STATUS AND LIST
@@ -77,7 +77,7 @@ public class Customers extends Person {
     // implement changing status of rented car to available
     public void returnCar(){
         /////IF TIME ADD ASKING FOR USER ID , BUT NOT NECESSARY.
-        System.out.println("\nOh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
+        //System.out.println("\nOh Welcome back then! Which is the car that you want to return? I need the Car Identification Code");
 
 
         Boolean stillS= true;

@@ -8,7 +8,7 @@ public class Car {
     private String regNum;///// CAN REMOVE TO BE HONEST
     private Double price;
     private RentedStatus carStatus;
-    private String firstNameClient; /// this is to save client details to know who rented a specific car.
+    private String firstNameClient; /// this is to save client details to know who rented a specific car. need time to implement it, do only if time
     private String lastNameClient;
     private Integer idClient;
 
