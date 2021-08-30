@@ -41,7 +41,7 @@ public class CarsManagement {
         newCar.setRegNum(carReg);
 
         //get price and add to available cars
-        System.out.println("Enter daily rental price (per hour): ");
+        System.out.println("Enter rental price (per hour) £: ");
         double carPrice = scanner.nextDouble();
         newCar.setPrice(carPrice);
 
