@@ -131,7 +131,8 @@ public class AccessMenu {
             String keepAskingStaffOption = keepMenuRunning.nextLine();
             if (keepAskingStaffOption.equalsIgnoreCase("n")) {
                 System.out.println("EXITING PROGRAM...");
-                startingMenu = false;
+                //startingMenu = false;
+                System.exit(0);
             } else {
                 System.out.println("ACCESSING MAIN MENU AGAIN!\n");
                 Menu(garage, customer);
