@@ -66,7 +66,7 @@ public class AccessMenu {
                 case "2" -> {
                     // want to see list of rented and available cars?
                     // want to add/remove a car?
-                    // want to see customers lists?
+
 
                     //use CARSMANAGEMENT
                     Boolean staffStaffing = true;
@@ -100,7 +100,7 @@ public class AccessMenu {
                                 System.out.println("\nBye!");
                                 staffStaffing = false;
                             }
-                            default -> System.out.println("\nOPTION NOT RECOGNISED! Please select a number between 1 and 4");
+                            default -> System.out.println("\nOPTION NOT RECOGNISED! Please select a number between 1 and 5");
                         }
                         Scanner staffKeepWorking = new Scanner(System.in);
                         System.out.println("\nWould you like to do anything else? (y/n)");
@@ -119,7 +119,8 @@ public class AccessMenu {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 case "3" -> {
                     System.out.println("Exiting program....");
-                    startingMenu=false;
+                    //startingMenu=false;
+                    System.exit(0);
                 }
                 default -> System.out.println("\nOPTION NOT RECOGNISED! Please select a number between 1 and 3");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

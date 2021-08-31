@@ -14,8 +14,29 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+
         CarsManagement garage = new CarsManagement();
         Customers customer = new Customers(garage);
+        //adding some cars to available list, will change it to an actual dataBase when time permits
+        Car car1=new Car(1,"aaaaa","aaaaa",11d);
+        Car car2=new Car(2,"bbbbb","bbbbb",22d);
+        Car car3=new Car(3,"ccccc","ccccc",33d);
+        Car car4=new Car(4,"ddddd","ddddd",44d);
+        Car car5=new Car(5,"eeeee","eeeee",55d);
+        Car car6=new Car(6,"fffff","fffff",66d);
+        Car car7=new Car(7,"ggggg","ggggg",77d);
+        garage.getAvailableCars().add(car1);
+        garage.getAvailableCars().add(car2);
+        garage.getAvailableCars().add(car3);
+        garage.getAvailableCars().add(car4);
+        garage.getAvailableCars().add(car5);
+        garage.getAvailableCars().add(car6);
+        garage.getAvailableCars().add(car7);
+
+
+
+        // STARTING MENU
         AccessMenu startMenu=new AccessMenu();
         startMenu.Menu(garage,customer);
     }

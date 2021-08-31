@@ -23,6 +23,16 @@ public class Car {
         this.lastNameClient = "N/A";
         this.idClient = 0;
     }
+    public Car(Integer id, String make, String regNum, Double price) {
+        this.id = id;
+        this.make = make;
+        this.regNum = regNum;
+        this.price = price;
+        this.carStatus = RentedStatus.AVAILABLE;
+        this.firstNameClient = "N/A";
+        this.lastNameClient = "N/A";
+        this.idClient = 0;
+    }
 
 
     public Integer getId() {
