@@ -7,15 +7,45 @@ public class Car implements Serializable {
     private Integer id;
     private String make;
     private String regNum;
-    private Double price; /////ADD ONLY IF TIME AND WILL
+    private Double price;
     private RentedStatus carStatus;
+    private String firstNameClient;
+    private String lastNameClient;
+    private Integer idClient;
 
-    public Car(Integer id, String make, String regNum) {
+    public Car() {
         this.id = id;
         this.make = make;
         this.regNum = regNum;
         this.price = 0.0;
         this.carStatus = RentedStatus.AVAILABLE;
+        this.firstNameClient = "N/A";
+        this.lastNameClient = "N/A";
+        this.idClient = 0;
+    }
+
+    public String getFirstNameClient() {
+        return firstNameClient;
+    }
+
+    public void setFirstNameClient(String firstNameClient) {
+        this.firstNameClient = firstNameClient;
+    }
+
+    public String getLastNameClient() {
+        return lastNameClient;
+    }
+
+    public void setLastNameClient(String lastNameClient) {
+        this.lastNameClient = lastNameClient;
+    }
+
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public Integer getId() {

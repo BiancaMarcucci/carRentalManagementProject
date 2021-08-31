@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        CarRentalDB garage = new CarRentalDB();
+        CarsManagement garage = new CarsManagement();
+        Customers customers = new Customers(garage);
 
         // Get available cars from file
 
@@ -40,8 +41,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        garage.listRentedCars();
-        garage.listAvailableCars();
+        AccessMenu startMenu = new AccessMenu();
+        startMenu.Menu(garage, customers);
 
         // Write available cars to file
 
